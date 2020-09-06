@@ -2,25 +2,19 @@
   "dockerImageBuilder": "cimg/python:3.8",
   "inputs": [
     {
-      "cache": {
-        "active": true,
-        "newLabel": "Type new value. ",
-        "qty": 6
-      },
-      "label": "Type : ",
-      "name": "sample_text",
+      "label": "What is the project name? ",
+      "name": "project_name",
       "type": "text"
     },
     {
-      "default": "in1",
+      "default": "React Native",
       "items": [
-        "in_list1",
-        "in_list2",
-        "in_list3",
-        "in_listN"
+        "React Native",
+        "ReactJS",
+        "NodeJS"
       ],
-      "label": "Pick your : ",
-      "name": "sample_list",
+      "label": "Which framework do you want to use ? ",
+      "name": "framework",
       "type": "text"
     },
     {
@@ -29,8 +23,8 @@
         "false",
         "true"
       ],
-      "label": "Pick: ",
-      "name": "sample_bool",
+      "label": "Do you want to run and code now ? ",
+      "name": "run",
       "type": "bool"
     }
   ]

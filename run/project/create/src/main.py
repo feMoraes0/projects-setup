@@ -3,7 +3,7 @@ import os
 
 from formula import formula
 
-input1 = os.environ.get("SAMPLE_TEXT")
-input2 = os.environ.get("SAMPLE_LIST")
-input3 = os.environ.get("SAMPLE_BOOL")
-formula.Run(input1, input2, input3)
+project_name = os.environ.get("PROJECT_NAME")
+framework = os.environ.get("FRAMEWORK")
+run = os.environ.get("RUN")
+formula.Run(project_name, framework, run)
