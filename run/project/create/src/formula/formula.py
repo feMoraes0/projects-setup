@@ -2,8 +2,13 @@
 from colored import fg, attr
 
 
-def Run(input1, input2, input3):
-    print("Hello World!")
-    print("%sYou receive {} in text.%s".format(input1) % (fg(2), attr(0)))
-    print("%sYou receive {} in list.%s".format(input2) % (fg(1), attr(0)))
-    print("%sYou receive {} in boolean.%s".format(input3) % (fg(3), attr(0)))
+def is_valid(project_name):
+    if(project_name.find(" ") != -1):
+        return 0 # is not valid
+    return 1 # is valid
+
+def Run(project_name, framework, wanna_run):
+    if(is_valid(project_name)):
+        print('is valid')
+    else:
+        print('is not valid')
