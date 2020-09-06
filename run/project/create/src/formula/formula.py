@@ -1,15 +1,16 @@
 #!/usr/bin/python3
 from colored import fg, attr
 import os
+import subprocess
 
 def success(message):
-    print("%s ✔ {}%s".format(message) % (fg(3), attr(0)))
+    print("%s ✔ {}%s".format(message) % (fg(2), attr(0)))
 
 def error(message):
-    print("%s ✘ {}%s".format(message) % (fg(2), attr(0)))
+    print("%s ✘ {}%s".format(message) % (fg(1), attr(0)))
 
 def create(project_name, framework):
-    if(framework == 'React'):
+    if(framework == 'ReactJS'):
         os.system(f'npx create-react-app {project_name}')
     elif(framework == 'React Native'):
         os.system(f'npx react-native init {project_name}')
@@ -17,13 +18,20 @@ def create(project_name, framework):
         os.system(f'mkdir {project_name} && cd {project_name} && npm init -y')
 
 def is_valid(project_name):
-    if(project_name.find(" ") != -1):
+    restrictions = [" ", "-"]
+    if any(x in project_name for x in restrictions):
         return 0 # is not valid
     return 1 # is valid
 
-def Run(project_name, framework, wanna_run):
+def Run(project_name, project_path, framework, wanna_run):
+
+    if(project_path.find('~') != -1):
+        project_path = project_path.replace('~', os.path.expanduser('~'))
+
+    os.system(f'cd {project_path}')
+    
     if(is_valid(project_name)):
         create(project_name, framework)
         success(f'Project {project_name} created with success!')
     else:
-        error('Invalid project name - white spaces are not allowed!')
+        error('Invalid project name.')

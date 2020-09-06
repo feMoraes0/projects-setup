@@ -7,6 +7,16 @@
       "type": "text"
     },
     {
+      "cache": {
+        "active": true,
+        "newLabel": "Type new path. ",
+        "qty": 3
+      },
+      "label": "Where do you want to save it? ",
+      "name": "project_path",
+      "type": "text"
+    },
+    {
       "default": "React Native",
       "items": [
         "React Native",
