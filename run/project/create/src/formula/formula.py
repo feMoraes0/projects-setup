@@ -1,13 +1,7 @@
 #!/usr/bin/python3
-from colored import fg, attr
 import os
-import subprocess
 
-def success(message):
-    print("%s ✔ {}%s".format(message) % (fg(2), attr(0)))
-
-def error(message):
-    print("%s ✘ {}%s".format(message) % (fg(1), attr(0)))
+from helpers.message import Message
 
 def create(project_name, framework):
     if(framework == 'ReactJS'):
@@ -24,7 +18,8 @@ def is_valid(project_name):
     return 1 # is valid
 
 def Run(project_name, project_path, framework, wanna_run):
-
+    message = Message()
+    
     if(project_path.find('~') != -1):
         project_path = project_path.replace('~', os.path.expanduser('~'))
 
@@ -32,6 +27,6 @@ def Run(project_name, project_path, framework, wanna_run):
     
     if(is_valid(project_name)):
         create(project_name, framework)
-        success(f'Project {project_name} created with success!')
+        message.success(f'Project {project_name} created with success!')
     else:
-        error('Invalid project name.')
+        message.error('Invalid project name.')
